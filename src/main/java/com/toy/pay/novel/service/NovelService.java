@@ -32,11 +32,6 @@ public class NovelService {
         return novel.getId();
     }
 
-    private Author findAuthorById(Long authorId) {
-        return authorRepository.findById(authorId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 저자입니다"));
-    }
-
     @Transactional
     public Long writeNovel(Long id, NovelWriteRequest request) {
         Volume volume = new Volume(request.getContent());
@@ -45,6 +40,16 @@ public class NovelService {
         novel.write(volume);
 
         return volume.getId();
+    }
+
+    @Transactional
+    public void deleteNovel(Long id) {
+        novelRepository.deleteById(id);
+    }
+
+    private Author findAuthorById(Long authorId) {
+        return authorRepository.findById(authorId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 저자입니다"));
     }
 
     private Novel findNovelById(Long novelId) {

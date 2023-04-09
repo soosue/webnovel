@@ -3,6 +3,7 @@ package com.toy.pay.novel.web;
 import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,5 +33,11 @@ public class NovelController {
         Long volumeId = novelService.writeNovel(id, request);
 
         return ResponseEntity.created(URI.create("/novel/" + id + "/" + volumeId)).build();
+    }
+
+    @DeleteMapping("/novel/{id}")
+    public ResponseEntity<Void> deleteNovel(@PathVariable Long id) {
+        novelService.deleteNovel(id);
+        return ResponseEntity.ok().build();
     }
 }
