@@ -3,6 +3,7 @@ package com.toy.pay.novel.web;
 import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +24,13 @@ public class NovelController {
         Long novelId = novelService.registerNovel(request);
 
         return ResponseEntity.created(URI.create("/novel/" + novelId)).build();
+    }
+
+    @PostMapping("/novel/{id}")
+    public ResponseEntity<Void> writeNovel(@PathVariable Long id, @RequestBody NovelWriteRequest request) {
+
+        Long volumeId = novelService.writeNovel(id, request);
+
+        return ResponseEntity.created(URI.create("/novel/" + id + "/" + volumeId)).build();
     }
 }

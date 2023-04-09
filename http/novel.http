@@ -7,3 +7,11 @@ Content-Type: application/json
   "category": "FANTASY",
   "authorId": "1"
 }
+
+### 소설 한편 작성
+POST {{host}}/novel/1
+Content-Type: application/json
+
+{
+  "content": "이 세상에는 개발자가 나 한 명 밖에 없다."
+}
