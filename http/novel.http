@@ -1,0 +1,9 @@
+### 소설 등록
+POST {{host}}/novel
+Content-Type: application/json
+
+{
+  "title": "나 혼자만 개발자",
+  "category": "FANTASY",
+  "authorId": "1"
+}
