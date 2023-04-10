@@ -18,3 +18,21 @@ Content-Type: application/json
 
 ### 소설 삭제
 DELETE {{host}}/novel/1
+
+
+### 선호작 등록
+POST {{host}}/favorite
+Content-Type: application/json
+
+{
+  "novelId": "1",
+  "readerId": "1"
+}
+
+### 선호작 목록 조회
+GET {{host}}/favorite
+Content-Type: application/json
+
+{
+  "readerId": "1"
+}
