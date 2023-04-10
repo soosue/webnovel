@@ -10,9 +10,6 @@ import com.toy.pay.novel.domain.FavoriteNovelRepository;
 import com.toy.pay.novel.domain.Novel;
 import com.toy.pay.novel.domain.Reader;
 import com.toy.pay.novel.domain.ReaderRepository;
-import com.toy.pay.novel.web.FavoriteNovelAddRequest;
-import com.toy.pay.novel.web.FavoriteNovelGetRequest;
-import com.toy.pay.novel.web.FavoriteNovelGetResponse;
 import com.toy.pay.novel.web.ListResponse;
 
 @Service

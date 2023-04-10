@@ -1,4 +1,4 @@
-package com.toy.pay.novel.web;
+package com.toy.pay.novel.service;
 
 public class FavoriteNovelAddRequest {
     private Long novelId;

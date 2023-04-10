@@ -8,8 +8,6 @@ import com.toy.pay.novel.domain.AuthorRepository;
 import com.toy.pay.novel.domain.Novel;
 import com.toy.pay.novel.domain.NovelRepository;
 import com.toy.pay.novel.domain.Volume;
-import com.toy.pay.novel.web.NovelRegisterRequest;
-import com.toy.pay.novel.web.NovelWriteRequest;
 
 @Service
 @Transactional(readOnly = true)
