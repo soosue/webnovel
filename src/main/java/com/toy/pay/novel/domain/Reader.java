@@ -3,6 +3,7 @@ package com.toy.pay.novel.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -11,7 +12,7 @@ import jakarta.persistence.OneToMany;
 public class Reader {
     @Id
     private Long id;
-    @OneToMany(mappedBy = "reader")
+    @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FavoriteNovel> favoriteNovels = new ArrayList<>();
 
     public void addFavoritesNovel(Novel novel) {
