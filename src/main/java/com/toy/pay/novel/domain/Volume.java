@@ -16,7 +16,7 @@ public class Volume {
     @ManyToOne(fetch = FetchType.LAZY)
     private Novel novel;
 
-    public Volume() {
+    protected Volume() {
     }
 
     public Volume(String content) {

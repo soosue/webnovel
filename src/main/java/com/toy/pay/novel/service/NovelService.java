@@ -47,6 +47,10 @@ public class NovelService {
         novelRepository.deleteById(id);
     }
 
+    public Novel findNovel(Long novelId) {
+        return findNovelById(novelId);
+    }
+
     private Author findAuthorById(Long authorId) {
         return authorRepository.findById(authorId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 저자입니다"));
