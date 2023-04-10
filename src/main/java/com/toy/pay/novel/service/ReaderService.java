@@ -1,13 +1,19 @@
 package com.toy.pay.novel.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.toy.pay.novel.domain.FavoriteNovel;
 import com.toy.pay.novel.domain.FavoriteNovelRepository;
 import com.toy.pay.novel.domain.Novel;
 import com.toy.pay.novel.domain.Reader;
 import com.toy.pay.novel.domain.ReaderRepository;
 import com.toy.pay.novel.web.FavoriteNovelAddRequest;
+import com.toy.pay.novel.web.FavoriteNovelGetRequest;
+import com.toy.pay.novel.web.FavoriteNovelGetResponse;
+import com.toy.pay.novel.web.ListResponse;
 
 @Service
 @Transactional(readOnly = true)
@@ -29,6 +35,14 @@ public class ReaderService {
         Novel novel = novelService.findNovel(request.getNovelId());
 
         reader.addFavoritesNovel(novel);
+    }
+
+    public ListResponse<FavoriteNovelGetResponse> getFavoriteNovel(FavoriteNovelGetRequest request) {
+        List<FavoriteNovel> favoriteNovels = favoriteNovelRepository.findByReaderId(request.getReaderId());
+
+        return new ListResponse<>(favoriteNovels.stream()
+                .map(FavoriteNovelGetResponse::new)
+                .toList());
     }
 
     private Reader findReaderById(Long readerId) {
