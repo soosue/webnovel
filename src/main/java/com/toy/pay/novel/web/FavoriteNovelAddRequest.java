@@ -2,7 +2,7 @@ package com.toy.pay.novel.web;
 
 public class FavoriteNovelAddRequest {
     private Long novelId;
-    private Long userId;
+    private Long readerId;
 
     public Long getNovelId() {
         return novelId;
@@ -12,11 +12,11 @@ public class FavoriteNovelAddRequest {
         this.novelId = novelId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getReaderId() {
+        return readerId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setReaderId(Long readerId) {
+        this.readerId = readerId;
     }
 }

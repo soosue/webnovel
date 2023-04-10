@@ -5,22 +5,22 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class ReaderTest {
     @Test
     void 선호작을_추가한다() {
         Novel novel = new Novel();
-        User user = new User();
+        Reader reader = new Reader();
 
-        assertDoesNotThrow(() -> user.addFavoritesNovel(novel));
+        assertDoesNotThrow(() -> reader.addFavoritesNovel(novel));
     }
 
     @Test
     void 이미_추가한_선호작을_추가한다() {
         Novel novel = new Novel();
-        User user = new User();
-        user.addFavoritesNovel(novel);
+        Reader reader = new Reader();
+        reader.addFavoritesNovel(novel);
 
-        assertThatThrownBy(() -> user.addFavoritesNovel(novel))
+        assertThatThrownBy(() -> reader.addFavoritesNovel(novel))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이미 선호작에 추가한 소설입니다");
     }

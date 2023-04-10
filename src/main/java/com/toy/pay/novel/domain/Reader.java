@@ -8,10 +8,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class User {
+public class Reader {
     @Id
     private Long id;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "reader")
     private List<FavoriteNovel> favoriteNovels = new ArrayList<>();
 
     public void addFavoritesNovel(Novel novel) {

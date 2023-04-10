@@ -16,14 +16,14 @@ public class FavoriteNovel {
     @OneToOne(fetch = FetchType.LAZY)
     private Novel novel;
     @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    private Reader reader;
 
     protected FavoriteNovel() {
     }
 
-    public FavoriteNovel(Novel novel, User user) {
+    public FavoriteNovel(Novel novel, Reader reader) {
         this.novel = novel;
-        this.user = user;
+        this.reader = reader;
     }
 
     public Novel getNovel() {

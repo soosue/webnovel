@@ -9,8 +9,8 @@ class FavoriteNovelTest {
     void 선호작_소설이_해당_소설인지_확인한다() {
         Novel novel = new Novel();
         Novel novel2 = new Novel();
-        User user = new User();
-        FavoriteNovel favoriteNovel = new FavoriteNovel(novel, user);
+        Reader reader = new Reader();
+        FavoriteNovel favoriteNovel = new FavoriteNovel(novel, reader);
 
         assertThat(favoriteNovel.has(novel)).isTrue();
         assertThat(favoriteNovel.has(novel2)).isFalse();

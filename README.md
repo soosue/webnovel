@@ -12,7 +12,7 @@ Volume 소설 한 편
 Author 저자
 
 ---
-User 사용자
+Reader 독자
 
 ---
 Favorite 선호작

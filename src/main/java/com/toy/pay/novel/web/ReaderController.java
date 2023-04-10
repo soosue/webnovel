@@ -5,19 +5,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.toy.pay.novel.service.UserService;
+import com.toy.pay.novel.service.ReaderService;
 
 @RestController
-public class UserController {
-    private final UserService userService;
+public class ReaderController {
+    private final ReaderService readerService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public ReaderController(ReaderService readerService) {
+        this.readerService = readerService;
     }
 
     @PostMapping("/favorite")
     public ResponseEntity<Void> addFavoriteNovel(@RequestBody FavoriteNovelAddRequest request) {
-        userService.addFavoriteNovel(request);
+        readerService.addFavoriteNovel(request);
         return ResponseEntity.ok().build();
     }
 }
