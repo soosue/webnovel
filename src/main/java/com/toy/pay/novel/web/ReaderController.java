@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.toy.pay.novel.service.FavoriteNovelAddRequest;
-import com.toy.pay.novel.service.FavoriteNovelGetRequest;
 import com.toy.pay.novel.service.FavoriteNovelGetResponse;
 import com.toy.pay.novel.service.ReaderService;
+import com.toy.pay.security.ReaderId;
 
 @RestController
 public class ReaderController {
@@ -20,14 +20,14 @@ public class ReaderController {
     }
 
     @PostMapping("/favorite")
-    public ResponseEntity<Void> addFavoriteNovel(@RequestBody FavoriteNovelAddRequest request) {
-        readerService.addFavoriteNovel(request);
+    public ResponseEntity<Void> addFavoriteNovel(@RequestBody FavoriteNovelAddRequest request, @ReaderId Long readerId) {
+        readerService.addFavoriteNovel(request, readerId);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/favorite")
-    public ResponseEntity<ListResponse<FavoriteNovelGetResponse>> getFavoriteNovel(@RequestBody FavoriteNovelGetRequest request) {
+    public ResponseEntity<ListResponse<FavoriteNovelGetResponse>> getFavoriteNovel(@ReaderId Long readerId) {
 
-        return ResponseEntity.ok(readerService.getFavoriteNovel(request));
+        return ResponseEntity.ok(readerService.getFavoriteNovel(readerId));
     }
 }

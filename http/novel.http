@@ -23,16 +23,12 @@ DELETE {{host}}/novel/1
 ### 선호작 등록
 POST {{host}}/favorite
 Content-Type: application/json
+X-Reader-Id: 1
 
 {
-  "novelId": "1",
-  "readerId": "1"
+  "novelId": "1"
 }
 
 ### 선호작 목록 조회
 GET {{host}}/favorite
-Content-Type: application/json
-
-{
-  "readerId": "1"
-}
+X-Reader-Id: 1

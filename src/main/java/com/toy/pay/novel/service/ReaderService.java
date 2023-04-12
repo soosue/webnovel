@@ -27,15 +27,15 @@ public class ReaderService {
     }
 
     @Transactional
-    public void addFavoriteNovel(FavoriteNovelAddRequest request) {
-        Reader reader = findReaderById(request.getReaderId());
+    public void addFavoriteNovel(FavoriteNovelAddRequest request, Long readerId) {
+        Reader reader = findReaderById(readerId);
         Novel novel = novelService.findNovel(request.getNovelId());
 
         reader.addFavoritesNovel(novel);
     }
 
-    public ListResponse<FavoriteNovelGetResponse> getFavoriteNovel(FavoriteNovelGetRequest request) {
-        List<FavoriteNovel> favoriteNovels = favoriteNovelRepository.findByReaderId(request.getReaderId());
+    public ListResponse<FavoriteNovelGetResponse> getFavoriteNovel(Long readerId) {
+        List<FavoriteNovel> favoriteNovels = favoriteNovelRepository.findByReaderId(readerId);
 
         return new ListResponse<>(favoriteNovels.stream()
                 .map(FavoriteNovelGetResponse::new)
