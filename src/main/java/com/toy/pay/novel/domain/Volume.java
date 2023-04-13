@@ -30,4 +30,8 @@ public class Volume {
     public Long getId() {
         return id;
     }
+
+    public String getContent() {
+        return content;
+    }
 }

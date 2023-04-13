@@ -11,16 +11,16 @@ class ReaderTest {
         Novel novel = new Novel();
         Reader reader = new Reader();
 
-        assertDoesNotThrow(() -> reader.addFavoritesNovel(novel));
+        assertDoesNotThrow(() -> reader.addFavoriteNovel(novel));
     }
 
     @Test
     void 이미_추가한_선호작을_추가한다() {
         Novel novel = new Novel();
         Reader reader = new Reader();
-        reader.addFavoritesNovel(novel);
+        reader.addFavoriteNovel(novel);
 
-        assertThatThrownBy(() -> reader.addFavoritesNovel(novel))
+        assertThatThrownBy(() -> reader.addFavoriteNovel(novel))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("이미 선호작에 추가한 소설입니다");
     }

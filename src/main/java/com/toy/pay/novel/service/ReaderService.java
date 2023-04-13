@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.toy.pay.novel.domain.FavoriteNovel;
 import com.toy.pay.novel.domain.FavoriteNovelRepository;
+import com.toy.pay.novel.domain.LastRead;
+import com.toy.pay.novel.domain.LastReadRepository;
 import com.toy.pay.novel.domain.Novel;
 import com.toy.pay.novel.domain.Reader;
 import com.toy.pay.novel.domain.ReaderRepository;
@@ -19,11 +21,13 @@ public class ReaderService {
 
     private final ReaderRepository readerRepository;
     private final FavoriteNovelRepository favoriteNovelRepository;
+    private final LastReadRepository lastReadRepository;
 
-    public ReaderService(NovelService novelService, ReaderRepository readerRepository, FavoriteNovelRepository favoriteNovelRepository) {
+    public ReaderService(NovelService novelService, ReaderRepository readerRepository, FavoriteNovelRepository favoriteNovelRepository, LastReadRepository lastReadRepository) {
         this.novelService = novelService;
         this.readerRepository = readerRepository;
         this.favoriteNovelRepository = favoriteNovelRepository;
+        this.lastReadRepository = lastReadRepository;
     }
 
     @Transactional
@@ -31,7 +35,7 @@ public class ReaderService {
         Reader reader = findReaderById(readerId);
         Novel novel = novelService.findNovel(request.getNovelId());
 
-        reader.addFavoritesNovel(novel);
+        reader.addFavoriteNovel(novel);
     }
 
     public ListResponse<FavoriteNovelGetResponse> getFavoriteNovel(Long readerId) {
@@ -45,5 +49,14 @@ public class ReaderService {
     private Reader findReaderById(Long readerId) {
         return readerRepository.findById(readerId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다"));
+    }
+
+    @Transactional
+    public void readVolume(Long novelId, Long volumeId, Long readerId) {
+        LastRead lastRead = lastReadRepository.findByReaderIdAndNovelId(readerId, novelId)
+                .orElseGet(() -> new LastRead(readerId, novelId, volumeId));
+
+        lastRead.read(volumeId);
+        lastReadRepository.save(lastRead);
     }
 }

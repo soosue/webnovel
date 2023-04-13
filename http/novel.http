@@ -32,3 +32,7 @@ X-Reader-Id: 1
 ### 선호작 목록 조회
 GET {{host}}/favorite
 X-Reader-Id: 1
+
+### 소설 조회
+GET {{host}}/novel/1/volume/1
+X-Reader-Id: 1

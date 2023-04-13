@@ -15,7 +15,7 @@ public class Reader {
     @OneToMany(mappedBy = "reader", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<FavoriteNovel> favoriteNovels = new ArrayList<>();
 
-    public void addFavoritesNovel(Novel novel) {
+    public void addFavoriteNovel(Novel novel) {
         boolean alreadyAdd = favoriteNovels.stream()
                 .filter(fNovel -> fNovel.has(novel))
                 .findFirst()
